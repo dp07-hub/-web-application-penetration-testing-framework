@@ -1,0 +1,8 @@
+import csv
+
+def export_csv(results, filename='scan_report.csv'):
+    with open(filename, mode='w', newline='') as file:
+        writer = csv.writer(file)
+        writer.writerow(["Type", "Details"])
+        for item in results:
+            writer.writerow([item["type"], item["details"]])

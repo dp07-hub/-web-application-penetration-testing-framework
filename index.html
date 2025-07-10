@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Web Pentest Framework</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: #fff;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        form {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        input[type="text"] {
+            padding: 10px;
+            width: 300px;
+            border-radius: 5px;
+            border: none;
+        }
+        button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #00c6ff;
+            color: #fff;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0072ff;
+        }
+        .results {
+            max-width: 700px;
+            margin: auto;
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .result-item {
+            margin-bottom: 10px;
+            border-bottom: 1px solid #ccc;
+            padding: 10px 0;
+        }
+        .logout {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .logout a {
+            color: #fff;
+            text-decoration: none;
+        }
+        .logout a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Web Application Pentest Framework</h1>
+    <form method="post">
+        <input type="text" name="url" placeholder="Enter target URL" required>
+        <button type="submit">Start Scan</button>
+        <button type="submit" name="export" value="pdf">Export as PDF</button>
+        <button type="submit" name="export" value="csv">Export as CSV</button>
+    </form>
+    {% if results %}
+    <div class="results">
+        <h2>Scan Results:</h2>
+        {% for r in results %}
+        <div class="result-item">
+            <strong>{{ r.type }}:</strong> {{ r.details }}
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+    <div class="logout">
+        <a href="/logout">Logout</a>
+    </div>
+</body>
+</html>
